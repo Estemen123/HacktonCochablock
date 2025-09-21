@@ -33,8 +33,6 @@ export default function RootLayout({
                 <WagmiProvider config={config}>
                     <QueryClientProvider client={queryClient}>
                         <RainbowKitProvider>
-                            {/** ... */}
-                            <Navbarcomponent />
                             {children}
                         </RainbowKitProvider>
                     </QueryClientProvider>

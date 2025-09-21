@@ -13,10 +13,7 @@ export default function App() {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-        {/** ... */}
-        <div>
-          
-        </div>
+          <HomePage />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
