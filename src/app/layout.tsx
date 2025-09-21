@@ -6,6 +6,7 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 import { Navbarcomponent } from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
                 <WagmiProvider config={config}>
                     <QueryClientProvider client={queryClient}>
                         <RainbowKitProvider>
+                            <Navbarcomponent/>
                             {children}
+                            <Toaster />
                         </RainbowKitProvider>
                     </QueryClientProvider>
                 </WagmiProvider>
