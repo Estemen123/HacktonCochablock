@@ -27,14 +27,14 @@ export default function TransferForm() {
                 precio: Number(formData.get("precio")),
             };
 
-            const res = await fetch("/Api/sales", {
+            const res = await fetch("/api/sales", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
-            // await transfer(String(precio), wallet);
-            toast("Pago correcto", {
-                description: "Se realizo el pago correctamente.",
+            const data = await res.json();
+            toast("Pago correcto ", {
+                description: "Se realizo el pago correctamente. Celestia: " + data.celestia,
                 action: {
                     label: "cerrar",
                     onClick: () => console.log("cerrar"),

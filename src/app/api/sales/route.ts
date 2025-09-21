@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const blobData = JSON.stringify({ wallet, producto, cantidad, precio, fecha: Date.now() });
 
-    /*
+    
     //celstia
     const celestiaRes = await fetch("http://127.0.0.1:26658", {
       method: "POST",
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       }),
     });
 
-    const celestiaResult = await celestiaRes.json();*/
+    const celestiaResult = await celestiaRes.json();
 
     //DB
     console.log(blobData);
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         producto,
         cantidad,
         precio,
-        null,
+        celestiaResult.result,
         null
       ]
     );
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       ok: true,
-      //celestia: celestiaResult.result,
+      celestia: celestiaResult.result,
     });
     } catch (err: any) {
         console.error("Error en POST /api/sales:", err);

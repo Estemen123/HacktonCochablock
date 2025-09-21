@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 const WelcomeCard = () => {
+     const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
     return (
         <div className="flex  pt-8 min-h-[calc(50vh-80px)] px-6">
             <div className="max-w-2xl mx-auto text-center">
@@ -21,6 +26,12 @@ const WelcomeCard = () => {
                             reciclables en Civecoins.
                         </p>
                     </div>
+                    <button
+                        onClick={() => setVisible(false)}
+                        className="mt-6 px-4 py-2 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 transition"
+                    >
+                        Cerrar
+                    </button>
                 </div>
             </div>
         </div>
@@ -40,7 +51,7 @@ const ContainerUser = () => {
                     <div className="bg-emerald-50 rounded-2xl p-6 border-2 border-emerald-200">
                         <div className="flex items-center justify-between mb-3">
                             <span className="text-emerald-700 text-sm font-medium">
-                                Nivel Básico
+                                Papel
                             </span>
                             <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                 +2 Tokens
@@ -60,7 +71,7 @@ const ContainerUser = () => {
                     <div className="bg-emerald-50 rounded-2xl p-6 border-2 border-emerald-200">
                         <div className="flex items-center justify-between mb-3">
                             <span className="text-emerald-700 text-sm font-medium">
-                                Nivel Intermedio
+                                Plastico
                             </span>
                             <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                 +5 Tokens
@@ -80,19 +91,19 @@ const ContainerUser = () => {
                     <div className="bg-emerald-50 rounded-2xl p-6 border-2 border-emerald-200">
                         <div className="flex items-center justify-between mb-3">
                             <span className="text-emerald-700 text-sm font-medium">
-                                Nivel Avanzado
+                                Vidrio
                             </span>
                             <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                 +10 Tokens
                             </span>
                         </div>
                         <div className="text-emerald-800 text-lg font-semibold mb-2">
-                            25kg acumulados
+                            24kg acumulados
                         </div>
                         <div className="w-full bg-emerald-200 rounded-full h-3">
                             <div
                                 className="bg-emerald-500 h-3 rounded-full"
-                                style={{ width: "100%" }}
+                                style={{ width: "90%" }}
                             ></div>
                         </div>
                     </div>
