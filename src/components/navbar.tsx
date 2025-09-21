@@ -1,5 +1,7 @@
+"use client"
 import { useToken } from "@/hook/useToken";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
 
 const Navbarcomponent = () => {
     const {

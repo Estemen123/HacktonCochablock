@@ -62,15 +62,24 @@ const useToken = () => {
 };
 
 const useAdminToken = () => {
-    const { writeContractAsync } = useWriteContract();
-    const transfer = async (Amount: string, idWallet: `0x${string}`) => {
-        await writeContractAsync({
-            abi: erc20Abi,
-            address: TOKEN_ADDRESS,
-            functionName: "transfer",
-            args: [idWallet, parseUnits(Amount, DECIMALS)],
-        });
-    };
-    return { transfer };
+  const { address, isConnected } = useAccount(); // ✅ saber si está conectado
+  const { writeContractAsync } = useWriteContract();
+
+  const transfer = async (amount: string, wallet: `0x${string}`) => {
+    console.log(wallet);
+    if (!isConnected) {
+      throw new Error("Debes conectar tu wallet antes de transferir.");
+    }
+
+    return await writeContractAsync({
+      abi: erc20Abi,
+      address: TOKEN_ADDRESS,
+      functionName: "transfer",
+      args: [wallet, parseUnits(amount, DECIMALS)],
+    });
+  };
+
+  return { transfer, isConnected, address };
 };
-export { useToken, useAdminToken };
+
+export {useToken,useAdminToken}

@@ -15,7 +15,7 @@ export default function App() {
         <RainbowKitProvider>
         {/** ... */}
         <div>
-          <HomePage></HomePage>
+          
         </div>
         </RainbowKitProvider>
       </QueryClientProvider>
