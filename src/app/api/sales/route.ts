@@ -54,7 +54,7 @@ export async function POST(req: Request) {
         null
       ]
     );
-    client.release();*/
+    client.release(); */
 
     return NextResponse.json({
       ok: true,
