@@ -10,21 +10,30 @@ export default function TransferForm() {
     const { transfer } = useAdminToken();
 
     const handleSubmit = async (e: any) => {
-    e.preventDefault(); 
+        e.preventDefault();
 
-    try {
-      const formData = new FormData(e.currentTarget);
-    console.log(formData);
-    const wallet = formData.get("wallet") as `0x${string}`;
-    const cantidad = formData.get("cantidad") as string;
-    const precio = formData.get("precio") as string;
-    console.log(cantidad);
-      await transfer(String(precio), wallet);
-    } catch (err) {
-      console.error("Error en transfer:", err);
-    } 
-  };
-   
+        try {
+            const formData = new FormData(e.currentTarget);
+            const precio = formData.get("precio") as string;
+            const wallet = formData.get("wallet") as `0x${string}`;
+
+            const payload = {
+                wallet: formData.get("wallet") as string,
+                producto: formData.get("producto") as string,
+                cantidad: Number(formData.get("cantidad")),
+                precio: Number(formData.get("precio")),
+            };
+            
+            const res = await fetch("/Api/sales", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            // await transfer(String(precio), wallet);
+        } catch (err) {
+            console.error("Error en transfer:", err);
+        }
+    };
 
     return (
         <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 via-teal-50 to-emerald-100 flex items-center justify-center p-6">
@@ -33,6 +42,7 @@ export default function TransferForm() {
             <div className="absolute top-40 right-20 w-24 h-24 bg-green-300/30 rounded-full blur-2xl animate-sway"></div>
             <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-teal-300/25 rounded-full blur-xl animate-pulse"></div>
             <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-orange-300/20 rounded-full blur-3xl animate-float"></div>
+
 
             <form
                 onSubmit={handleSubmit}
@@ -54,7 +64,7 @@ export default function TransferForm() {
                         Transfiere Civecoins por materiales reciclados
                     </p>
                 </div>
-
+              
                 {/* Wallet */}
                 <div className="relative z-10">
                     <label className="block text-sm font-semibold text-emerald-800 mb-2">
