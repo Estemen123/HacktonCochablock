@@ -81,6 +81,22 @@ export default function TransferForm() {
                     </div>
                 </div>
 
+                {/* Producto */}
+                <div className="relative z-10">
+                    <label className="block text-sm font-semibold text-amber-800 mb-2">
+                        📦 Tipo de Producto
+                    </label>
+                    <div className="relative">
+                        <input
+                            name="producto"
+                            type="text"
+                            placeholder="Ej: Plástico, Cartón, Metal..."
+                            className="w-full px-4 py-3 bg-amber-50/80 backdrop-blur-sm border border-amber-200/60 rounded-xl text-amber-900 placeholder-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-300 hover:bg-amber-50"
+                        />
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-amber-400/10 to-orange-400/10 pointer-events-none"></div>
+                    </div>
+                </div>
+
                 {/* Cantidad en kg */}
                 <div className="relative z-10">
                     <label className="block text-sm font-semibold text-green-800 mb-2">
