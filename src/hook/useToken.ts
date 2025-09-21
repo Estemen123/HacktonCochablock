@@ -1,7 +1,7 @@
 import { erc20Abi, formatUnits, parseUnits } from "viem";
 import { useAccount, useReadContracts, useWriteContract } from "wagmi";
 
-const TOKEN_ADDRESS = "0x8cbAEA78df7eAe94095a23ea46D72F8A536AD1fc";
+const TOKEN_ADDRESS = "0x318bfE4910Bd7d2554F7354c1311E924B36B6A1e";
 const DECIMALS = 18;
 
 const useToken = () => {
@@ -49,6 +49,7 @@ const useToken = () => {
         data?.[3].result || BigInt("0"),
         DECIMALS
     );
+    console.log("BalanceOf:", data);
     return {
         data,
         formatedTotalSupply,

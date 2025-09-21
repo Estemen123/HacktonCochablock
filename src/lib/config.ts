@@ -1,6 +1,6 @@
 "use client"
 import { createConfig, http } from 'wagmi'
-import {arbitrumSepolia} from 'wagmi/chains'
+import {sepolia} from 'wagmi/chains'
 import type { Config } from "wagmi";
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
@@ -22,8 +22,8 @@ const connectors = connectorsForWallets(
 );
 
 export const config: Config = createConfig({connectors,
-    chains: [arbitrumSepolia],
+    chains: [sepolia],
     transports: {
-      [arbitrumSepolia.id]: http(),
+      [sepolia.id]: http(),
     }
   });

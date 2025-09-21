@@ -55,7 +55,7 @@ const Navbarcomponent = () => {
                             {Intl.NumberFormat("en-US").format(
                                 Number(formatedTotalSupply)
                             )}{" "}
-                            {data?.[1].result}
+                            {data?.[2].result}
                         </span>
                     </li>
 
@@ -64,7 +64,7 @@ const Navbarcomponent = () => {
                             <span className="font-medium text-orange-700">Balance:</span>{" "}
                             <span className="text-orange-800 font-bold">
                                 {Intl.NumberFormat("en-US").format(
-                                    Number(formatedBalanceOf)
+                                    Number(data?.[3].result)
                                 )}
                             </span>
                         </li>

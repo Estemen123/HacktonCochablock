@@ -41,7 +41,7 @@ export async function POST(req: Request) {
 
     //DB
     console.log(blobData);
-    const client = await pool.connect();
+    /*const client = await pool.connect();
     await client.query(
       `INSERT INTO sales (wallet, producto, cantidad, precio, celestia_height, celestia_commitment)
        VALUES ($1, $2, $3, $4, $5, $6)`,
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
         null
       ]
     );
-    client.release();
+    client.release();*/
 
     return NextResponse.json({
       ok: true,
