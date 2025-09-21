@@ -10,21 +10,30 @@ export default function TransferForm() {
     const { transfer } = useAdminToken();
 
     const handleSubmit = async (e: any) => {
-    e.preventDefault(); 
+        e.preventDefault();
 
-    try {
-      const formData = new FormData(e.currentTarget);
-    console.log(formData);
-    const wallet = formData.get("wallet") as `0x${string}`;
-    const cantidad = formData.get("cantidad") as string;
-    const precio = formData.get("precio") as string;
-    console.log(cantidad);
-      await transfer(String(precio), wallet);
-    } catch (err) {
-      console.error("Error en transfer:", err);
-    } 
-  };
-   
+        try {
+            const formData = new FormData(e.currentTarget);
+            const precio = formData.get("precio") as string;
+            const wallet = formData.get("wallet") as `0x${string}`;
+
+            const payload = {
+                wallet: formData.get("wallet") as string,
+                producto: formData.get("producto") as string,
+                cantidad: Number(formData.get("cantidad")),
+                precio: Number(formData.get("precio")),
+            };
+            
+            const res = await fetch("/Api/sales", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            // await transfer(String(precio), wallet);
+        } catch (err) {
+            console.error("Error en transfer:", err);
+        }
+    };
 
     return (
         <form
@@ -47,7 +56,17 @@ export default function TransferForm() {
                     className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
             </div>
-
+            <div>
+                <label className="block text-sm font-medium text-gray-700">
+                    Producto
+                </label>
+                <input
+                    name="producto"
+                    type="text"
+                    placeholder="0x..."
+                    className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+            </div>
             {/* Cantidad */}
             <div>
                 <label className="block text-sm font-medium text-gray-700">
